@@ -7,7 +7,6 @@
     <body>
         <div class="d-flex justify-content-between align-items-center">
             <h1 class="form-title">Energy Dashboard</h1>
-            <button class="btn btn-primary"><i class="fa-solid fa-plus"></i>&ensp;Add Plant</button>
         </div>
         <div class="container grid grid-thirds grid-container mt-4">
         </div>
@@ -15,13 +14,58 @@
             <div class="container grid grid-thirds">
                 <div class="chart-wrapper">
                 <div class="chart-title">
-                    Cost Predicted
+                    Connections
+                </div>
+                <div class="chart-stage">
+                    </div>
+                    <div class="chart-notes">
+                        <div class="dropdown">
+                            <button class="dropbtn" onclick="toggleDropdown('dropdown1')">Tuya Plug 1</button>
+                            <div class="dropdown-content" id="dropdown1">
+                                <a href="#" onclick="displayItem('Toaster', 'selectedItemInput1', 'dropdown1')">Toaster</a>
+                                <a href="#" onclick="displayItem('Fridge', 'selectedItemInput1', 'dropdown1')">Fridge</a>
+                                <a href="#" onclick="displayItem('Television', 'selectedItemInput1', 'dropdown1')">Television</a>
+                                <a href="#" onclick="displayItem('Desktop', 'selectedItemInput1', 'dropdown1')">Desktop</a>
+                            </div>
+                        </div>
+                        <form class="item-form" id="selectedItemForm1">
+                            <input type="text" id="selectedItemInput1" name="selectedItem">
+                        </form>
+                        
+                        <div class="dropdown">
+                            <button class="dropbtn" onclick="toggleDropdown('dropdown2')">Tuya Plug 2</button>
+                            <div class="dropdown-content" id="dropdown2">
+                                <a href="#" onclick="displayItem('Toaster', 'selectedItemInput2', 'dropdown2')">Toaster</a>
+                                <a href="#" onclick="displayItem('Fridge', 'selectedItemInput2', 'dropdown2')">Fridge</a>
+                                <a href="#" onclick="displayItem('Television', 'selectedItemInput2', 'dropdown2')">Television</a>
+                                <a href="#" onclick="displayItem('Desktop', 'selectedItemInput2', 'dropdown2')">Desktop</a>
+                            </div>
+                        </div>
+                        <form class="item-form" id="selectedItemForm2">
+                            <input type="text" id="selectedItemInput2" name="selectedItem">
+                        </form>
+                        
+                        <div class="dropdown">
+                            <button class="dropbtn" onclick="toggleDropdown('dropdown3')">Tuya Plug 3</button>
+                            <div class="dropdown-content" id="dropdown3">
+                                <a href="#" onclick="displayItem('Toaster', 'selectedItemInput3', 'dropdown3')">Toaster</a>
+                                <a href="#" onclick="displayItem('Fridge', 'selectedItemInput3', 'dropdown3')">Fridge</a>
+                                <a href="#" onclick="displayItem('Television', 'selectedItemInput3', 'dropdown3')">Television</a>
+                                <a href="#" onclick="displayItem('Desktop', 'selectedItemInput3', 'dropdown3')">Desktop</a>
+                            </div>
+                        </div>
+                        <form class="item-form" id="selectedItemForm3">
+                            <input type="text" id="selectedItemInput3" name="selectedItem">
+                        </form>
+                    </div>
+                    
+                </div>
+                <div class="chart-wrapper">
+                <div class="chart-title">
+                    Cost Prediction
                 </div>
                 <div class="chart-stage">
                     <canvas id="cost-chart"></canvas>
-                    </div>
-                <div class="chart-notes">
-                    Notes about this chart
                 </div>
                 </div>
                 <div class="chart-wrapper">
@@ -29,21 +73,7 @@
                     Costs Saved
                 </div>
                 <div class="chart-stage">
-                    <img data-src="holder.js/100px180?theme=white">
-                </div>
-                <div class="chart-notes">
-                    Notes about this chart
-                </div>
-                </div>
-                <div class="chart-wrapper">
-                <div class="chart-title">
-                    Usage Estimate
-                </div>
-                <div class="chart-stage">
-                    <img data-src="holder.js/100px180?theme=white">
-                </div>
-                <div class="chart-notes">
-                    Notes about this chart
+                    <canvas id="change-chart"></canvas>
                 </div>
                 </div>
                 <div class="chart-wrapper">
@@ -53,30 +83,15 @@
                 <div class="chart-stage">
                     <canvas id="appliance-chart"></canvas>
                 </div>
-                <div class="chart-notes">
-                    Notes about this chart
-                </div>
-                </div>
-                <div class="chart-wrapper">
-                <div class="chart-title">
-                    Energy Intensity
-                </div>
-                <div class="chart-stage">
-                    <img data-src="holder.js/100px180?theme=white">
-                </div>
-                <div class="chart-notes">
-                    Notes about this chart
-                </div>
                 </div>
                 <div class="chart-wrapper">
                 <div class="chart-title">
                     Smart Tips
                 </div>
                 <div class="chart-stage">
-                    <img data-src="holder.js/100px180?theme=white">
                 </div>
                 <div class="chart-notes">
-                    Notes about this chart
+                    On warm days, setting a programmable thermostat to a higher setting when you are not at home can help reduce your energy costs by approximately 10 percent.
                 </div>
                 </div>
             </div>
@@ -116,6 +131,36 @@
     });
 </script>
 
+<script>
+    // Get the canvas element
+    var ctx = document.getElementById('change-chart').getContext('2d');
+
+    // Define chart data
+    var changeData = {
+        labels: ['Mar', 'Apr'],
+        datasets: [{
+            label: 'Total electricity cost',
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',   
+            borderWidth: 1,
+            data: [217, 280]
+        }]
+    };
+
+    // Create and render the chart
+    var changeChart = new Chart(ctx, {
+        type: 'bar',
+        data: changeData,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
 <!-- JavaScript code to initialize and render the chart -->
 <script>
     // Get the canvas element
@@ -125,11 +170,11 @@
     var applianceData = {
         labels: ['Tuya Plug 1', 'Tuya Plug 2', 'Tuya Plug 3'],
         datasets: [{
-            label: 'Number of Active Appliances',
+            label: 'Energy Consumption (kW)',
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
             borderColor: 'rgba(255, 99, 132, 1)',   
             borderWidth: 1,
-            data: [230, 920, 95]
+            data: [0.13, 1, 0.3]
         }]
     };
 
@@ -145,6 +190,49 @@
             }
         }
     });
+</script>
+
+<script>
+    // Get the canvas element
+    var ctx = document.getElementById('energy-chart').getContext('2d');
+
+    // Define chart data
+    var energyData = {
+        labels: [
+            'Electricity',
+            'Gas'
+        ],
+        datasets: [{
+            label: 'Cost',
+            data: [230,50],
+            backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)'
+            ],
+            hoverOffset: 4
+        }]
+    };
+
+    // Create and render the chart
+    var energyChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: energyData,
+    });
+</script>
+
+<script>
+    function toggleDropdown(dropdownId) {
+        var dropdown = document.getElementById(dropdownId);
+        dropdown.classList.toggle("show");
+    }
+
+    function displayItem(item, inputId, dropdownId) {
+        var selectedItemInput = document.getElementById(inputId);
+        selectedItemInput.value = item;
+        
+        var dropdown = document.getElementById(dropdownId);
+        dropdown.classList.remove("show");
+    }
 </script>
 
 {% endblock %}

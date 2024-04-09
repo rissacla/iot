@@ -12,9 +12,11 @@ def create_app():
 
     # import blueprints
     from .dashboard import dashboard_bp
+    from .preferences import preferences_bp
     from .settings import settings_bp
 
     app.register_blueprint(dashboard_bp,  url_prefix="/")
+    app.register_blueprint(preferences_bp)
     app.register_blueprint(settings_bp)
 
     with app.app_context():

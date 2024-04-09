@@ -10,86 +10,145 @@
     <div class="custom-card d-flex flex-column gap-1">
         <div class="d-flex flex-column">
             <h4 class="setting-title">
-                General Settings
+            
+                Tuya Plug Settings
             </h>
             <div class="subsection">
-                <h5 class="setting-selected">
-                    Account Settings 
+                <h5 class="setting-title">
+                    Connections
                 </h>
                 <h5 class="setting-title">
-                    Notification
+                    Maximum Current
                 </h>
                 <h5 class="setting-title">
-                    Activity Logs
-                </h>
-                <h5 class="setting-title">
-                    Accessibility
-                </h>
-                <h5 class="setting-title">
-                    Personalization
+                    Priority
                 </h>
             </div>
             <hr/>
-        </div>
-        <div class="d-flex flex-column">
-            <h4 class="setting-title">
-                Security Settings
-            </h>
-            <div class="subsection">
-                <h5 class="setting-title">
-                    2 Factor Authentication 
-                </h>
-                <h5 class="setting-title">
-                    Security Alerts
-                </h>
-                <h5 class="setting-title">
-                    Devices
-                </h>
-            </div>
-            <hr/>
-        </div>
-        <div class="d-flex flex-column">
-            <h4 class="setting-title">
-                Support & About
-            </h>
-            <div class="subsection">
-                <h5 class="setting-title">
-                    Help Centre
-                </h>
-                <h5 class="setting-title">
-                    About
-                </h>
-                <h5 class="setting-title">
-                    FAQs
-                </h>
-                <h5 class="setting-title">
-                    Terms and Policies
-                </h>
-            </div>
         </div>
     </div>
+    <div class="column-gap"></div>
     <div class="custom-card info">
         <div class="mt-3">
             <h2 class="post-title">
-                Account Settings
+                Connections
             </h>
         </div>
-        <div class="setting-form d-flex flex-column gap-3">
-            <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" value="John Doe">
+        <div class="preferences-form d-flex flex-column gap-3">
+            <div class="dropdown">
+                <button class="dropbtn" onclick="toggleDropdown('dropdown1')">Tuya Plug 1</button>
+                <div class="dropdown-content" id="dropdown1">
+                    <a href="#" onclick="displayItem('Toaster', 'selectedItemInput1', 'dropdown1')">Toaster</a>
+                    <a href="#" onclick="displayItem('Fridge', 'selectedItemInput1', 'dropdown1')">Fridge</a>
+                    <a href="#" onclick="displayItem('Television', 'selectedItemInput1', 'dropdown1')">Television</a>
+                    <a href="#" onclick="displayItem('Desktop', 'selectedItemInput1', 'dropdown1')">Desktop</a>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" name="username" value="admin">
+            <form class="item-form" id="selectedItemForm1">
+                <input type="text" id="selectedItemInput1" name="selectedItem">
+            </form>
+            
+            <div class="dropdown">
+                <button class="dropbtn" onclick="toggleDropdown('dropdown2')">Tuya Plug 2</button>
+                <div class="dropdown-content" id="dropdown2">
+                    <a href="#" onclick="displayItem('Toaster', 'selectedItemInput2', 'dropdown2')">Toaster</a>
+                    <a href="#" onclick="displayItem('Fridge', 'selectedItemInput2', 'dropdown2')">Fridge</a>
+                    <a href="#" onclick="displayItem('Television', 'selectedItemInput2', 'dropdown2')">Television</a>
+                    <a href="#" onclick="displayItem('Desktop', 'selectedItemInput2', 'dropdown2')">Desktop</a>
+                </div>
             </div>
-            <div class="mb-5">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" value="dsdsdsfef">
+            <form class="item-form" id="selectedItemForm2">
+                <input type="text" id="selectedItemInput2" name="selectedItem">
+            </form>
+            
+            <div class="dropdown">
+                <button class="dropbtn" onclick="toggleDropdown('dropdown3')">Tuya Plug 3</button>
+                <div class="dropdown-content" id="dropdown3">
+                    <a href="#" onclick="displayItem('Toaster', 'selectedItemInput3', 'dropdown3')">Toaster</a>
+                    <a href="#" onclick="displayItem('Fridge', 'selectedItemInput3', 'dropdown3')">Fridge</a>
+                    <a href="#" onclick="displayItem('Television', 'selectedItemInput3', 'dropdown3')">Television</a>
+                    <a href="#" onclick="displayItem('Desktop', 'selectedItemInput3', 'dropdown3')">Desktop</a>
+                </div>
             </div>
-                <button type="submit" class="btn btn-primary setting-save">Save</button>
+            <form class="item-form" id="selectedItemForm3">
+                <input type="text" id="selectedItemInput3" name="selectedItem">
+            </form>
+        </div>
+    </div>
+
+    <div class="custom-card info">
+        <div class="mt-3">
+            <h2 class="post-title">
+                Maximum Current (kW)
+            </h2>
+        </div>
+        <div class="preferences-form d-flex flex-column gap-3">
+            <div class="mb-3" style="margin-top: 12px;"> <!-- Adjust margin-top value as needed -->
+                <input type="text" class="form-control" id="name" name="name" style="width: 100px;">
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="custom-card info">
+        <div class="mt-3">
+            <h2 class="post-title">
+                Priority
+            </h>
+        </div>
+        <div class="preferences-form d-flex flex-column gap-3">
+            <div class="dropdown">
+                <button class="dropbtn" onclick="toggleDropdown('dropdown4')">Tuya Plug 1</button>
+                <div class="dropdown-content" id="dropdown4">
+                    <a href="#" onclick="displayItem('1', 'selectedItemInput4', 'dropdown4')">1</a>
+                    <a href="#" onclick="displayItem('2', 'selectedItemInput4', 'dropdown4')">2</a>
+                    <a href="#" onclick="displayItem('3', 'selectedItemInput4', 'dropdown4')">3</a>
+                </div>
+            </div>
+            <form class="item-form" id="selectedItemForm4">
+                <input type="text" id="selectedItemInput4" name="selectedItem">
+            </form>
+            
+            <div class="dropdown">
+                <button class="dropbtn" onclick="toggleDropdown('dropdown5')">Tuya Plug 2</button>
+                <div class="dropdown-content" id="dropdown5">
+                    <a href="#" onclick="displayItem('1', 'selectedItemInput5', 'dropdown5')">1</a>
+                    <a href="#" onclick="displayItem('2', 'selectedItemInput5', 'dropdown5')">2</a>
+                    <a href="#" onclick="displayItem('3', 'selectedItemInput5', 'dropdown5')">3</a>
+                </div>
+            </div>
+            <form class="item-form" id="selectedItemForm5">
+                <input type="text" id="selectedItemInput5" name="selectedItem">
+            </form>
+            
+            <div class="dropdown">
+                <button class="dropbtn" onclick="toggleDropdown('dropdown6')">Tuya Plug 3</button>
+                <div class="dropdown-content" id="dropdown6">
+                    <a href="#" onclick="displayItem('1', 'selectedItemInput6', 'dropdown6')">1</a>
+                    <a href="#" onclick="displayItem('2', 'selectedItemInput6', 'dropdown6')">2</a>
+                    <a href="#" onclick="displayItem('3', 'selectedItemInput6', 'dropdown6')">3</a>
+                </div>
+            </div>
+            <form class="item-form" id="selectedItemForm6">
+                <input type="text" id="selectedItemInput6" name="selectedItem">
+            </form>
         </div>
     </div>
 </div>
+
+<script>
+    function toggleDropdown(dropdownId) {
+        var dropdown = document.getElementById(dropdownId);
+        dropdown.classList.toggle("show");
+    }
+
+    function displayItem(item, inputId, dropdownId) {
+        var selectedItemInput = document.getElementById(inputId);
+        selectedItemInput.value = item;
+        
+        var dropdown = document.getElementById(dropdownId);
+        dropdown.classList.remove("show");
+    }
+</script>
 
 {% endblock %}
