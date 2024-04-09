@@ -63,8 +63,6 @@ def dashboard():
         },
     ]
 
-    if "user" not in session:
-        return redirect(url_for("auth.login"))
 
     if "header" in session:
         session.pop("header", None)
